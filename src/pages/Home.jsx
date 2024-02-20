@@ -10,18 +10,20 @@ const Home = () => {
   const secondLine = "and I do stuff for websites";
 
   return (
-    <span className="home">
-      <span className="first-line">
-        <p>{firstLinePartOne}</p>
-        <BackHandRoundedIcon />
-        <p>{firstLinePartTwo}</p>
-      </span>
-      <span className="name">
-        <p>{myNameAndSurname}</p>{" "}
-      </span>
-      <span className="second-line">
-        <p>{secondLine}</p>
-        <LaptopMacRoundedIcon />
+    <span id="home">
+      <span>
+        <span className="first-line">
+          <p>{firstLinePartOne}</p>
+          <BackHandRoundedIcon />
+          <p>{firstLinePartTwo}</p>
+        </span>
+        <span className="name">
+          <p>{myNameAndSurname}</p>
+        </span>
+        <span className="second-line">
+          <p>{secondLine}</p>
+          <LaptopMacRoundedIcon />
+        </span>
       </span>
     </span>
   );

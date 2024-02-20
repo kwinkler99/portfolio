@@ -1,5 +1,7 @@
+import "../assets/style/snake.scss";
+
 const Snake = () => {
-  return <span className="snake">Snake</span>;
+  return <span id="snake">Snake</span>;
 };
 
 export default Snake;

@@ -1,4 +1,10 @@
-.home {
+#home {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     span {
         margin: 4px 0;
 
