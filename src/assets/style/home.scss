@@ -1,0 +1,38 @@
+.home {
+    span {
+        margin: 4px 0;
+
+        p {
+            margin: 0;
+        }
+    
+        &.first-line, &.second-line {
+            display: flex;
+            align-items: center;
+        }
+
+        &.first-line {
+            svg {
+                width: 18px;
+                margin: 0 2px;
+            }
+        }
+    
+        &.name {
+            font-size: 96px;
+            color: var(--gray)
+        }
+    
+        &.second-line {
+            svg {
+                width: 60px;
+                height: 60px;
+                margin-left: 12px;
+                color: var(--gold)
+            }
+
+            font-size: 48px;
+            color: var(--dark-gray)
+        }
+    }
+}
