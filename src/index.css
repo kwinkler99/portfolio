@@ -1,7 +1,26 @@
+:root {
+  --dark-blue: #070812;
+  --gold: #B29758;
+  --gray: #AAAAAA;
+  --dark-gray: #6D6D6D;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: 'Noto Sans';
-  background-color: #070812;
-  color: #B29758;
+  background-color: var(--dark-blue);
+  color: var(--gold);
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
+
+body, #root {
+  width: 100vw;
+  height: 100vh;
+}

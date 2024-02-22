@@ -1,0 +1,15 @@
+.App {
+    display: grid;
+    grid-template-rows: repeat(4, 100vh);
+    justify-items: center;
+    align-items: center;
+    height: 400vh;
+}
+
+#home, #experience, #snake, #contact {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
