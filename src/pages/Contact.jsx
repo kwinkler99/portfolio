@@ -35,7 +35,7 @@ const Contact = () => {
   const Linkedin = () => (
     <>
       <LinkedInIcon />
-      <a href={`https://${data.linkedin}`} target="_blank">
+      <a href={`https://${data.linkedin}`} target="_blank" rel="noreferrer">
         {data.linkedin}
       </a>
     </>
@@ -44,7 +44,7 @@ const Contact = () => {
   const Github = () => (
     <>
       <GitHubIcon />
-      <a href={`https://${data.github}`} target="_blank">
+      <a href={`https://${data.github}`} target="_blank" rel="noreferrer">
         {data.github}
       </a>
     </>
@@ -53,7 +53,7 @@ const Contact = () => {
   const Figma = () => (
     <>
       <BrushIcon />
-      <a href={data.figmaHref} target="_blank">
+      <a href={data.figmaHref} target="_blank" rel="noreferrer">
         {data.figma}
       </a>
     </>
