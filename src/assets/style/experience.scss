@@ -1,0 +1,35 @@
+#experience {
+    .container {
+        color: #AAAAAA;
+        width: 944px;
+        display: flex;
+        justify-content: space-between;
+
+        .brand {
+            block-size: fit-content;
+            position: relative;
+
+            p {
+                margin: 0;
+            }
+
+            .line {
+                margin: 8px;
+                display: block;
+                position: absolute;
+                left: 30px;
+                width: 90%;
+                height: 1px;
+                background-color: var(--gold);
+            }
+        }
+
+        .description {
+            width: 520px;
+            
+            ul{
+                margin: 0;
+            }
+        }
+    }
+}

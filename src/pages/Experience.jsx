@@ -32,6 +32,7 @@ const Experience = () => {
             <p className="name">{item.brand}</p>
             <p className="position">{item.position}</p>
             <p className="period">{item.period}</p>
+            <span className="line" />
           </span>
           <span className="description">
             <ul>
