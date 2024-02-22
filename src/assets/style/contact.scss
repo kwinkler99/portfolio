@@ -1,0 +1,19 @@
+#contact {
+    .container {
+        .link {
+            margin: 10px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+
+            svg {
+                width: 24px;
+            }
+
+            a {
+                text-decoration: none;
+                color: var(--gray);
+            }
+        }
+    }
+}
