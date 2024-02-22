@@ -1,7 +1,11 @@
 import "../assets/style/contact.scss";
 
 const Contact = () => {
-  return <span id="contact">Contact</span>;
+  return (
+    <span data-section id="contact">
+      Contact
+    </span>
+  );
 };
 
 export default Contact;
