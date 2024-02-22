@@ -1,7 +1,11 @@
 import "../assets/style/experience.scss";
 
 const Experience = () => {
-  return <span id="experience">Experience</span>;
+  return (
+    <span data-section id="experience">
+      Experience
+    </span>
+  );
 };
 
 export default Experience;

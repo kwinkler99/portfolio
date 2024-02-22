@@ -10,7 +10,7 @@ const Home = () => {
   const secondLine = "and I do stuff for websites";
 
   return (
-    <span id="home">
+    <span data-section id="home">
       <span>
         <span className="first-line">
           <p>{firstLinePartOne}</p>
