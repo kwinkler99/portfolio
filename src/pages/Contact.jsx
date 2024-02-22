@@ -15,7 +15,7 @@ const Contact = () => {
     figma: "figma.com/portfolio",
     phoneHref: "+48512338362",
     figmaHref:
-      "https://www.figma.com/file/svGxBneV4qgk7yZPMT0P3x/Portfolio?type=design&node-id=66%3A133&mode=design&t=pQleptISXK3lHNoY-1",
+      "https://www.figma.com/file/svGxBneV4qgk7yZPMT0P3x/Portfolio?type=design&node-id=0%3A1&mode=design&t=dXwYSUMjkJ9bZ65t-1",
   };
 
   const Phone = () => (
@@ -35,7 +35,7 @@ const Contact = () => {
   const Linkedin = () => (
     <>
       <LinkedInIcon />
-      <a href={`https://${data.linkedin}`} target="_blank">
+      <a href={`https://${data.linkedin}`} target="_blank" rel="noreferrer">
         {data.linkedin}
       </a>
     </>
@@ -44,7 +44,7 @@ const Contact = () => {
   const Github = () => (
     <>
       <GitHubIcon />
-      <a href={`https://${data.github}`} target="_blank">
+      <a href={`https://${data.github}`} target="_blank" rel="noreferrer">
         {data.github}
       </a>
     </>
@@ -53,7 +53,7 @@ const Contact = () => {
   const Figma = () => (
     <>
       <BrushIcon />
-      <a href={data.figmaHref} target="_blank">
+      <a href={data.figmaHref} target="_blank" rel="noreferrer">
         {data.figma}
       </a>
     </>
