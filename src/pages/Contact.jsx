@@ -15,7 +15,7 @@ const Contact = () => {
     figma: "figma.com/portfolio",
     phoneHref: "+48512338362",
     figmaHref:
-      "https://www.figma.com/file/svGxBneV4qgk7yZPMT0P3x/Portfolio?type=design&node-id=66%3A133&mode=design&t=pQleptISXK3lHNoY-1",
+      "https://www.figma.com/file/svGxBneV4qgk7yZPMT0P3x/Portfolio?type=design&node-id=0%3A1&mode=design&t=dXwYSUMjkJ9bZ65t-1",
   };
 
   const Phone = () => (
