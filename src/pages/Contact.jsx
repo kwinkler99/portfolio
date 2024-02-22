@@ -7,25 +7,36 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import BrushIcon from "@mui/icons-material/Brush";
 
 const Contact = () => {
+  const data = {
+    phone: "+48 512-338-362",
+    mail: "kasia.winkler99@gmail.com",
+    linkedin: "linkedin.com/in/katarzyna-winkler",
+    github: "github.com/kwinkler99",
+    figma: "figma.com/portfolio",
+    phoneHref: "+48512338362",
+    figmaHref:
+      "https://www.figma.com/file/svGxBneV4qgk7yZPMT0P3x/Portfolio?type=design&node-id=66%3A133&mode=design&t=pQleptISXK3lHNoY-1",
+  };
+
   const Phone = () => (
     <>
       <PhoneIphoneIcon />
-      <a href="tel:+48512338362">+48 512-338-362</a>
+      <a href={`tel:${data.phoneHref}`}>{data.phone}</a>
     </>
   );
 
   const Mail = () => (
     <>
       <MailIcon />
-      <a href="mailto:kasia.winkler99@gmail.com">kasia.winkler99@gmail.com</a>
+      <a href={`mailto:${data.mail}`}>{data.mail}</a>
     </>
   );
 
   const Linkedin = () => (
     <>
       <LinkedInIcon />
-      <a href="https://linkedin.com/in/katarzyna-winkler" target="_blank">
-        linkedin.com/in/katarzyna-winkler
+      <a href={`https://${data.linkedin}`} target="_blank">
+        {data.linkedin}
       </a>
     </>
   );
@@ -33,8 +44,8 @@ const Contact = () => {
   const Github = () => (
     <>
       <GitHubIcon />
-      <a href="https://github.com/kwinkler99" target="_blank">
-        github.com/kwinkler99
+      <a href={`https://${data.github}`} target="_blank">
+        {data.github}
       </a>
     </>
   );
@@ -42,8 +53,8 @@ const Contact = () => {
   const Figma = () => (
     <>
       <BrushIcon />
-      <a href="www.github.com/kwinkler99" target="_blank">
-        figma.com/portfolio
+      <a href={data.figmaHref} target="_blank">
+        {data.figma}
       </a>
     </>
   );
