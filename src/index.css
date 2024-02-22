@@ -5,6 +5,10 @@
   --dark-gray: #6D6D6D;
 }
 
+html{
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: 'Noto Sans';
