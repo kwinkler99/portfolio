@@ -27,7 +27,7 @@ const Experience = () => {
   return (
     <span data-section id="experience">
       {experience.map((item) => (
-        <div className="container">
+        <div key={item.brand} className="container">
           <span className="brand">
             <p className="name">{item.brand}</p>
             <p className="position">{item.position}</p>
@@ -36,8 +36,8 @@ const Experience = () => {
           </span>
           <span className="description">
             <ul>
-              {item.description.map((point) => (
-                <li>{point}</li>
+              {item.description.map((point, index) => (
+                <li key={`point_${index}`}>{point}</li>
               ))}
             </ul>
           </span>
