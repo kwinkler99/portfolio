@@ -3,6 +3,8 @@ import snakeHead from "../../assets/images/SnakeHead.png";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
+import DefaultMove from "./DefaultMove";
+
 const Board = (props) => {
   const { startGame, stopGame, openScore } = props;
   const pointPosition = useSelector((state) => state.position.point);
@@ -84,6 +86,7 @@ const Board = (props) => {
   return (
     <>
       <Grid />
+      <DefaultMove />
     </>
   );
 };
