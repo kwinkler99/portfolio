@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 import DefaultMove from "./DefaultMove";
+import Move from "./Move";
 
 const Board = (props) => {
   const { startGame, stopGame, openScore } = props;
@@ -86,7 +87,7 @@ const Board = (props) => {
   return (
     <>
       <Grid />
-      <DefaultMove />
+      {startGame ? <Move stopGame={stopGame} /> : <DefaultMove />}
     </>
   );
 };
