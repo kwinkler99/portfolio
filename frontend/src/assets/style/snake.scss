@@ -1,0 +1,24 @@
+#snake {
+    .container {
+        display: flex;
+        justify-content: space-between;
+        gap: 50px;
+        
+        .board {
+            width: 574px;
+            height: 574px;
+            display: grid;
+            grid-template-columns: repeat(14, auto);
+            grid-template-rows: repeat(14, auto);
+
+            .boardCell {
+                border: 1px solid var(--board-border);
+            }
+        }
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+    }
+}
