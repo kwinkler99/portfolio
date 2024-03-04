@@ -4,11 +4,12 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 const Board = (props) => {
-  const { startGame, stopGame } = props;
+  const { startGame, stopGame, openScore } = props;
   const pointPosition = useSelector((state) => state.position.point);
   const headPosition = useSelector((state) => state.position.head);
   const directionPosition = useSelector((state) => state.position.direction);
   const tailPosition = useSelector((state) => state.position.tail);
+  const bite = useSelector((state) => state.position.bite);
 
   const boardNumber = 14;
 
@@ -40,6 +41,20 @@ const Board = (props) => {
       }
     }
 
+    if (bite) {
+      if (headRef) {
+        headRef.style.boxShadow = "inset 0px 0px 5px 2px #802323";
+      }
+
+      let biteRef = document.getElementsByClassName(
+        `position_${bite[0]}_${bite[1]}`
+      )[0];
+
+      if (biteRef) {
+        biteRef.style.boxShadow = "inset 0px 0px 5px 2px #802323";
+      }
+    }
+
     for (const cell of tailPosition) {
       let cellRef = document.getElementsByClassName(
         `position_${cell[0]}_${cell[1]}`
@@ -49,7 +64,15 @@ const Board = (props) => {
         cellRef.style.backgroundColor = "var(--blue)";
       }
     }
-  }, [headPosition, tailPosition, pointPosition, stopGame, startGame]);
+  }, [
+    headPosition,
+    tailPosition,
+    pointPosition,
+    stopGame,
+    startGame,
+    bite,
+    openScore,
+  ]);
 
   const Grid = () =>
     [...Array(boardNumber)].map((e, i) => {

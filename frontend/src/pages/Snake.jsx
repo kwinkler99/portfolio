@@ -1,7 +1,7 @@
 import "../assets/style/snake.scss";
 
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { reset } from "../reducers/movement";
 import Board from "./Snake/Board";
@@ -48,6 +48,12 @@ const Snake = () => {
     setStartGame(false);
     setOpenScore(false);
   };
+
+  useEffect(() => {
+    if (bite) {
+      setOpenScore(true);
+    }
+  }, [bite]);
 
   const Start = () => (
     <Button
