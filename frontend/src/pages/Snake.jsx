@@ -83,6 +83,27 @@ const Snake = () => {
     </Button>
   );
 
+  const Reset = () =>
+    startGame && (
+      <Button
+        onClick={() => {
+          dispatch(reset());
+          setStartGame(false);
+          setStopGame(false);
+        }}
+        color="primary"
+        variant="contained"
+      >
+        Reset
+      </Button>
+    );
+
+  const Result = () => (
+    <Button color="primary" variant="contained">
+      Result
+    </Button>
+  );
+
   return (
     <span data-section id="snake">
       <div className="container">
@@ -97,6 +118,8 @@ const Snake = () => {
           {!bite && (
             <>{!startGame ? <Start /> : !stopGame ? <Stop /> : <Resume />}</>
           )}
+          <Reset />
+          <Result />
         </div>
       </div>
       <Modal open={openStart} onClose={closeStartModal}>
