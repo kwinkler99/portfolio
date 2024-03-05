@@ -1,3 +1,5 @@
+@import "app";
+
 #home {
     span {
         margin: 4px 0;
@@ -33,6 +35,65 @@
 
             font-size: 48px;
             color: var(--dark-gray)
+        }
+
+        //responsiveness - tablet
+        @media only screen and (max-width: $tablet-width) {
+            &.first-line {
+                svg {
+                    width: 16px;
+                }
+            }
+        
+            &.name {
+                font-size: 80px;
+            }
+        
+            &.second-line {
+                svg {
+                    width: 40px;
+                    height: 40px;
+                }
+    
+                font-size: 32px;
+            }
+        }
+
+        @media only screen and (max-width: $small-tablet-width) {
+            &.name {
+                font-size: 72px;
+            }
+        
+            &.second-line {
+                svg {
+                    width: 35x;
+                    height: 35px;
+                }
+    
+                font-size: 26px;
+            }
+        }
+
+        //responsiveness - phone
+        @media only screen and (max-width: $phone-width) {
+            &.first-line {
+                svg {
+                    width: 12px;
+                }
+            }
+        
+            &.name {
+                font-size: 40px;
+            }
+        
+            &.second-line {
+                svg {
+                    width: 30x;
+                    height: 30px;
+                }
+    
+                font-size: 20px;
+            }
         }
     }
 }
