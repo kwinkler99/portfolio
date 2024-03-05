@@ -1,3 +1,5 @@
+@import "app";
+
 #contact {
     .container {
         .link {
@@ -11,9 +13,28 @@
             }
 
             a {
+                white-space: nowrap; 
                 text-decoration: none;
                 color: var(--gray);
             }
+        }
+
+        //responsiveness - tablet
+        @media only screen and (max-width: $tablet-width) {
+            font-size: 14px;
+            
+            svg {
+                width: 20px;
+                height: 20px;
+            } 
+        }
+
+        @media only screen and (max-width: $small-tablet-width) {
+            font-size: 12px;
+            
+            svg {
+                width: 15px;
+            } 
         }
     }
 }
