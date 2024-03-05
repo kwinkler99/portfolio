@@ -1,99 +1,103 @@
 @import "app";
 
 #home {
-    span {
-        margin: 4px 0;
+    .container {
+        margin: 20px;
 
-        p {
-            margin: 0;
-        }
-    
-        &.first-line, &.second-line {
-            display: flex;
-            align-items: center;
-        }
+        span {
+            margin: 4px 0;
 
-        &.first-line {
-            svg {
-                width: 18px;
-                margin: 0 2px;
+            p {
+                margin: 0;
             }
-        }
-    
-        &.name {
-            font-size: 96px;
-            color: var(--gray)
-        }
-    
-        &.second-line {
-            svg {
-                width: 60px;
-                height: 60px;
-                margin-left: 12px;
-                color: var(--gold)
+        
+            &.first-line, &.second-line {
+                display: flex;
+                align-items: center;
             }
 
-            font-size: 48px;
-            white-space: nowrap;
-            color: var(--dark-gray)
-        }
-
-        //responsiveness - tablet
-        @media only screen and (max-width: $tablet-width) {
             &.first-line {
                 svg {
-                    width: 16px;
+                    width: 18px;
+                    margin: 0 2px;
                 }
             }
         
             &.name {
-                font-size: 80px;
+                font-size: 96px;
+                color: var(--gray)
             }
         
             &.second-line {
                 svg {
-                    width: 40px;
-                    height: 40px;
+                    width: 60px;
+                    height: 60px;
+                    margin-left: 12px;
+                    color: var(--gold)
                 }
-    
-                font-size: 32px;
-            }
-        }
 
-        @media only screen and (max-width: $small-tablet-width) {
-            &.name {
-                font-size: 72px;
+                font-size: 48px;
+                white-space: nowrap;
+                color: var(--dark-gray)
             }
-        
-            &.second-line {
-                svg {
-                    width: 35x;
-                    height: 35px;
-                }
-    
-                font-size: 26px;
-            }
-        }
 
-        //responsiveness - phone
-        @media only screen and (max-width: $phone-width) {
-            &.first-line {
-                svg {
-                    width: 12px;
+            //responsiveness - tablet
+            @media only screen and (max-width: $tablet-width) {
+                &.first-line {
+                    svg {
+                        width: 16px;
+                    }
+                }
+            
+                &.name {
+                    font-size: 80px;
+                }
+            
+                &.second-line {
+                    svg {
+                        width: 40px;
+                        height: 40px;
+                    }
+        
+                    font-size: 32px;
                 }
             }
-        
-            &.name {
-                font-size: 40px;
-            }
-        
-            &.second-line {
-                svg {
-                    width: 30x;
-                    height: 30px;
+
+            @media only screen and (max-width: $small-tablet-width) {
+                &.name {
+                    font-size: 72px;
                 }
-    
-                font-size: 20px;
+            
+                &.second-line {
+                    svg {
+                        width: 35x;
+                        height: 35px;
+                    }
+        
+                    font-size: 26px;
+                }
+            }
+
+            //responsiveness - phone
+            @media only screen and (max-width: $phone-width) {
+                &.first-line {
+                    svg {
+                        width: 12px;
+                    }
+                }
+            
+                &.name {
+                    font-size: 40px;
+                }
+            
+                &.second-line {
+                    svg {
+                        width: 30x;
+                        height: 30px;
+                    }
+        
+                    font-size: 20px;
+                }
             }
         }
     }
