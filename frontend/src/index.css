@@ -3,6 +3,9 @@
   --gold: #B29758;
   --gray: #AAAAAA;
   --dark-gray: #6D6D6D;
+  --blue: #5873B2;
+  --board-border: #B9B9B9;
+  --modal-text: #202020;
 }
 
 html{
@@ -23,4 +26,58 @@ body::-webkit-scrollbar {
 body, #root {
   width: 100vw;
   height: 100vh;
+}
+
+.MuiBox-root {
+  .exit-icon {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    cursor: pointer;
+    display: flex;
+  }
+
+  .modal-icons{
+    display: grid;
+    gap: 8px;
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: repeat(2, auto);
+
+    .icon { 
+        width: 60px;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: var(--gold);
+        background-color: var(--modal-text);
+        border-radius: 6px;
+
+        svg {
+          width: 40px;
+          height: 40px;
+        }
+
+        &.up {
+          grid-row: 1;
+          grid-column: 2;
+        }
+
+        &.down { 
+          grid-row: 2;
+          grid-column: 2;
+        }
+
+        &.right {
+          grid-row: 2;
+          grid-column: 3;
+        }
+
+        &.left {
+          grid-row: 2;
+          grid-column: 1;
+        }
+
+    }
+  }   
 }
