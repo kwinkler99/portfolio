@@ -2,6 +2,8 @@ import "./assets/style/navbar.scss";
 import logo from "./assets/images/Logo.png";
 
 import { useState, useEffect, useRef } from "react";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState(null);
@@ -40,44 +42,60 @@ const Navbar = () => {
   };
 
   return (
-    <nav>
-      <span className="logo">
-        <img
-          onClick={() => document.getElementById("home").scrollIntoView(true)}
-          src={logo}
-          alt="Logo"
-          width={40}
-          height={40}
-        />
-      </span>
-      <ul>
-        <li
-          onClick={() =>
-            document.getElementById("experience").scrollIntoView(true)
-          }
-          id="nav-button-experience"
-          style={activeSection === "experience" ? activeStyle : {}}
-        >
-          Experience
-        </li>
-        <li
-          onClick={() => document.getElementById("snake").scrollIntoView(true)}
-          id="nav-button-snake"
-          style={activeSection === "snake" ? activeStyle : {}}
-        >
-          Let's play!
-        </li>
-        <li
-          onClick={() =>
-            document.getElementById("contact").scrollIntoView(true)
-          }
-          id="nav-button-contact"
-          style={activeSection === "contact" ? activeStyle : {}}
-        >
-          Contact
-        </li>
-      </ul>
-    </nav>
+    <>
+      <nav>
+        <span className="logo">
+          <img
+            onClick={() => document.getElementById("home").scrollIntoView(true)}
+            src={logo}
+            alt="Logo"
+            width={40}
+            height={40}
+          />
+        </span>
+        <ul className="default-navbar">
+          <li
+            onClick={() =>
+              document.getElementById("experience").scrollIntoView(true)
+            }
+            id="nav-button-experience"
+            style={activeSection === "experience" ? activeStyle : {}}
+          >
+            Experience
+          </li>
+          <li
+            onClick={() =>
+              document.getElementById("snake").scrollIntoView(true)
+            }
+            id="nav-button-snake"
+            style={activeSection === "snake" ? activeStyle : {}}
+          >
+            Let's play!
+          </li>
+          <li
+            onClick={() =>
+              document.getElementById("contact").scrollIntoView(true)
+            }
+            id="nav-button-contact"
+            style={activeSection === "contact" ? activeStyle : {}}
+          >
+            Contact
+          </li>
+        </ul>
+      </nav>
+
+      {(activeSection === "experience" || activeSection === "contact") && (
+        <span className="arrow-mobile-up">
+          <KeyboardArrowUpIcon />
+        </span>
+      )}
+
+      {(activeSection === "home" || activeSection === "experience") && (
+        <span className="arrow-mobile-down">
+          <KeyboardArrowDownIcon />
+        </span>
+      )}
+    </>
   );
 };
 
