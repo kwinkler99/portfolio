@@ -1,3 +1,12 @@
+@import "app";
+
+@mixin list-style {
+    list-style-type: none;
+    text-decoration: none;
+    cursor: pointer;
+    text-underline-position: under;
+}
+
 nav {
     min-width: 100vw;
     height: 90px;
@@ -16,22 +25,115 @@ nav {
         }
     }
 
-    ul {
-        display: flex;
-        align-items: center;
-        gap: 30px;
-        margin-right: 25px;
+    &.default-navbar {
+        ul {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-right: 25px;
 
-        li {
-            list-style-type: none;
-            color: var(--gold);
-            text-decoration: none;
-            cursor: pointer;
-            text-underline-position: under;
+            li {
+                @include list-style;
+                color: var(--gold);
 
-            &:hover{ 
-                text-decoration: underline var(--gold);
+                &:hover{ 
+                    text-decoration: underline var(--gold);
+                }
             }
         }
+    }
+
+    //responsiveness - disable game page
+    @media only screen and (max-width: $tablet-width) {
+        #nav-button-snake { 
+            display: none;
+        }
+    }
+}
+
+.modal-navbar, .mobile-navbar {
+    display: none;
+}
+
+//responsiveness - navbar modal
+@media only screen and (max-width: $small-tablet-width) {
+    .default-navbar {
+        display: none;
+    }
+
+    .mobile-navbar {
+        z-index: 2;
+        display: flex;
+
+        svg {
+            width: 40px;
+            height: 40px;
+            margin: 25px;
+            cursor: pointer;
+        }
+
+        .clear-icon {
+            color: var(--dark-blue);
+        }
+    }
+
+    .modal-navbar {
+        z-index: 1;
+        display: initial;
+        position: fixed;
+        left: 0;
+        top: 0;
+        min-width: 100vw;
+        min-height: 100vh;
+        background-color: var(--gold);
+        color: var(--dark-blue);
+        font-size: 20px;
+
+        ul {
+            margin-top: 120px;
+
+            li {
+                @include list-style;
+                margin-bottom: 10px;
+                float:left;
+                clear: both;
+                
+                &:hover{ 
+                    text-decoration: underline var(--dark-blue);
+                }
+            }
+            
+            #nav-button-snake { 
+                display: none;
+            }
+        }
+    }
+}
+
+//responsiveness - arrows
+@media only screen and (min-width: $tablet-width) {
+    .arrow-mobile-down, .arrow-mobile-up {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: $tablet-width) {
+    .arrow-mobile-down, .arrow-mobile-up {
+        position: fixed;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    
+        svg {
+            width: 35px;
+            height: 35px;
+        }
+    }
+
+    .arrow-mobile-down {
+        bottom: 0;  
+    }
+
+    .arrow-mobile-up {
+        top: 50px;  
     }
 }
