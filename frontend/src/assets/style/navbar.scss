@@ -1,3 +1,5 @@
+@import "app";
+
 nav {
     min-width: 100vw;
     height: 90px;
@@ -32,6 +34,13 @@ nav {
             &:hover{ 
                 text-decoration: underline var(--gold);
             }
+        }
+    }
+
+    //responsiveness - disable game page
+    @media only screen and (max-width: $tablet-width) {
+        #nav-button-snake { 
+            display: none;
         }
     }
 }
