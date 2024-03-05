@@ -11,7 +11,7 @@ const Home = () => {
 
   return (
     <span data-section id="home">
-      <span>
+      <span className="container">
         <span className="first-line">
           <p>{firstLinePartOne}</p>
           <BackHandRoundedIcon />

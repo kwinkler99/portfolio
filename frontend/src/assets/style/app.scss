@@ -1,9 +1,20 @@
+$tablet-width: 1024px;
+$small-tablet-width: 768px;
+$phone-width: 720px;
+
+
 .App {
     display: grid;
     grid-template-rows: repeat(4, 100vh);
     justify-items: center;
     align-items: center;
     height: 400vh;
+
+    //responsiveness - disable game page
+    @media only screen and (max-width: $tablet-width) {
+        grid-template-rows: repeat(3, 100vh);
+        height: 300vh;
+    }
 }
 
 #home, #experience, #snake, #contact {
