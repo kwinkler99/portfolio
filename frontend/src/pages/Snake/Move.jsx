@@ -34,11 +34,15 @@ const Move = (props) => {
   useEffect(() => {
     if (openScore) {
       axios
-        .post("/new_score", {
+        .post("http://localhost:8000/score", {
           value: points,
         })
         .then((response) => {
-          console.log(response);
+          if (response.status === 200) {
+            console.log(response.data);
+          } else {
+            throw new Error("status code !== 200");
+          }
         })
         .catch((err) => {
           console.log(err);
