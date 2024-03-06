@@ -1,14 +1,16 @@
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
 
 import { right, left, up, down } from "../../reducers/movement";
 
 const Move = (props) => {
-  const { stopGame } = props;
+  const { stopGame, openScore } = props;
   const requestRef = useRef();
   const previousTimeRef = useRef();
   const dispatch = useDispatch();
   const directionPosition = useSelector((state) => state.position.direction);
+  const points = useSelector((state) => state.points.value);
 
   const movement = () => {
     switch (directionPosition) {
@@ -28,6 +30,21 @@ const Move = (props) => {
         break;
     }
   };
+
+  useEffect(() => {
+    if (openScore) {
+      axios
+        .post("/new_score", {
+          value: points,
+        })
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [openScore]);
 
   useEffect(() => {
     if (stopGame) {

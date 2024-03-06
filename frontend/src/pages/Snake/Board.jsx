@@ -1,10 +1,11 @@
 import snakeHead from "../../assets/images/SnakeHead.png";
 
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import DefaultMove from "./DefaultMove";
 import Move from "./Move";
+import { incremented, resetPoints } from "../../reducers/movement";
 
 const Board = (props) => {
   const { startGame, stopGame, openScore } = props;
@@ -13,8 +14,19 @@ const Board = (props) => {
   const directionPosition = useSelector((state) => state.position.direction);
   const tailPosition = useSelector((state) => state.position.tail);
   const bite = useSelector((state) => state.position.bite);
+  const dispatch = useDispatch();
 
   const boardNumber = 14;
+
+  useEffect(() => {
+    dispatch(incremented());
+  }, [pointPosition]);
+
+  useEffect(() => {
+    if (startGame) {
+      dispatch(resetPoints());
+    }
+  }, [startGame]);
 
   useEffect(() => {
     let headRef = document.getElementsByClassName(
@@ -87,7 +99,11 @@ const Board = (props) => {
   return (
     <>
       <Grid />
-      {startGame ? <Move stopGame={stopGame} /> : <DefaultMove />}
+      {startGame ? (
+        <Move openScore={openScore} stopGame={stopGame} />
+      ) : (
+        <DefaultMove />
+      )}
     </>
   );
 };
