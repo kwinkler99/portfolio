@@ -17,7 +17,7 @@ const Navbar = () => {
 
   const variants = {
     open: (height = 1000) => ({
-      clipPath: `circle(${height * 2 + 200}px at 100% 0)`,
+      clipPath: `circle(${height * 2 + 200}px at calc(100% - 44.5px) 44.5px)`,
       transition: {
         type: "spring",
         stiffness: 10,
@@ -25,7 +25,7 @@ const Navbar = () => {
       },
     }),
     closed: {
-      clipPath: "circle(0 at 100% 0)",
+      clipPath: "circle(0 at calc(100% - 44.5px) 44.5px)",
       transition: {
         delay: 0.2,
         type: "spring",
