@@ -15,6 +15,26 @@ const Navbar = () => {
   const [openMobileNavbar, setOpenMobileNavbar] = useState(false);
   const sections = useRef([]);
 
+  const variants = {
+    open: (height = 1000) => ({
+      clipPath: `circle(${height * 2 + 200}px at 100% 0)`,
+      transition: {
+        type: "spring",
+        stiffness: 10,
+        restDelta: 2,
+      },
+    }),
+    closed: {
+      clipPath: "circle(0 at 100% 0)",
+      transition: {
+        delay: 0.2,
+        type: "spring",
+        stiffness: 400,
+        damping: 70,
+      },
+    },
+  };
+
   const handleScroll = () => {
     const scrollY = window.scrollY;
     let newActiveSection = null;
@@ -115,43 +135,53 @@ const Navbar = () => {
       <nav className="mobile-navbar">
         <span className="logo">
           <img
-            onClick={() =>
-              !openMobileNavbar &&
-              document.getElementById("home").scrollIntoView(true)
-            }
-            src={openMobileNavbar ? darkLogo : logo}
+            onClick={() => document.getElementById("home").scrollIntoView(true)}
+            src={logo}
             alt="Logo"
             width={40}
             height={40}
           />
         </span>
-        {!openMobileNavbar ? (
-          <MenuIcon onClick={() => setOpenMobileNavbar(true)} />
-        ) : (
+        <MenuIcon onClick={() => setOpenMobileNavbar(true)} />
+      </nav>
+
+      <motion.div
+        className="modal-navbar"
+        animate={openMobileNavbar ? "open" : "closed"}
+        variants={variants}
+      >
+        <nav className="mobile-navbar">
+          <span className="logo">
+            <img
+              onClick={() =>
+                !openMobileNavbar &&
+                document.getElementById("home").scrollIntoView(true)
+              }
+              src={darkLogo}
+              alt="Logo"
+              width={40}
+              height={40}
+            />
+          </span>
           <ClearIcon
             className="clear-icon"
             onClick={() => setOpenMobileNavbar(false)}
           />
-        )}
-      </nav>
-
-      {openMobileNavbar && (
-        <span className="modal-navbar">
-          <ul>
-            <li
-              onClick={() => {
-                document.getElementById("home").scrollIntoView(true);
-                setOpenMobileNavbar(false);
-              }}
-              id={`nav-button-home`}
-              style={activeSection === "home" ? mobileActiveStyle : {}}
-            >
-              My name is...
-            </li>
-            <MobileList />
-          </ul>
-        </span>
-      )}
+        </nav>
+        <ul>
+          <li
+            onClick={() => {
+              document.getElementById("home").scrollIntoView(true);
+              setOpenMobileNavbar(false);
+            }}
+            id={`nav-button-home`}
+            style={activeSection === "home" ? mobileActiveStyle : {}}
+          >
+            My name is...
+          </li>
+          <MobileList />
+        </ul>
+      </motion.div>
 
       {(activeSection === "experience" || activeSection === "contact") && (
         <motion.div
