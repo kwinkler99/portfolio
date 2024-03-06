@@ -3,6 +3,8 @@ import logo from "./assets/images/Logo.png";
 import darkLogo from "./assets/images/LogoDark.png";
 
 import { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
+
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -152,15 +154,35 @@ const Navbar = () => {
       )}
 
       {(activeSection === "experience" || activeSection === "contact") && (
-        <span className="arrow-mobile-up">
+        <motion.div
+          animate={{
+            scale: [0.5, 1, 0.5],
+          }}
+          transition={{
+            duration: 3,
+            ease: "easeInOut",
+            repeat: Infinity,
+          }}
+          className="arrow-mobile-up"
+        >
           <KeyboardArrowUpIcon />
-        </span>
+        </motion.div>
       )}
 
       {(activeSection === "home" || activeSection === "experience") && (
-        <span className="arrow-mobile-down">
+        <motion.div
+          animate={{
+            scale: [0.5, 1, 0.5],
+          }}
+          transition={{
+            duration: 3,
+            ease: "easeInOut",
+            repeat: Infinity,
+          }}
+          className="arrow-mobile-down"
+        >
           <KeyboardArrowDownIcon />
-        </span>
+        </motion.div>
       )}
     </>
   );
