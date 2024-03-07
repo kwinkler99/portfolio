@@ -3,11 +3,10 @@ import "../assets/style/snake.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
-import { reset } from "../reducers/movement";
+import { reset, resetPoints } from "../reducers/movement";
 import Board from "./Snake/Board";
 
 import { Box, Modal, Typography, Button } from "@mui/material";
-import { motion } from "framer-motion";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
@@ -94,6 +93,7 @@ const Snake = () => {
       <Button
         onClick={() => {
           dispatch(reset());
+          dispatch(resetPoints());
           setStartGame(false);
           setStopGame(false);
         }}
@@ -157,23 +157,17 @@ const Snake = () => {
       </Modal>
 
       <Modal open={openScore} onClose={closeScoreModal}>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 2 }}
-        >
-          <Box sx={style}>
-            <span className="exit-icon">
-              <ClearIcon onClick={closeScoreModal} />
-            </span>
-            <Typography
-              id="modal-modal-description"
-              sx={{ mt: 2, display: "flex" }}
-            >
-              {`Congratulation! Your score: ${"score_here"}`}
-            </Typography>
-          </Box>
-        </motion.div>
+        <Box sx={style}>
+          <span className="exit-icon">
+            <ClearIcon onClick={closeScoreModal} />
+          </span>
+          <Typography
+            id="modal-modal-description"
+            sx={{ mt: 2, display: "flex" }}
+          >
+            {`Congratulation! Your score: ${"score_here"}`}
+          </Typography>
+        </Box>
       </Modal>
     </span>
   );
