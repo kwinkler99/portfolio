@@ -7,11 +7,15 @@ initialState: {
 },
 reducers: {
     incremented: state => {
-    state.value += 1
+        state.value += 1
     },
+    resetPoints: state => {
+        state.value = 0
+    }
 }
 })
 
+export const { incremented, resetPoints } = pointsSlice.actions
 
 const checkPosition = (newHeadPosition, tailPosition) => {
     return newHeadPosition[0] === tailPosition[0] && newHeadPosition[1] === tailPosition[1]

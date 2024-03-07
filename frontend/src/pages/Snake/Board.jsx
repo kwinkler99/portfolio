@@ -1,20 +1,36 @@
 import snakeHead from "../../assets/images/SnakeHead.png";
 
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import DefaultMove from "./DefaultMove";
 import Move from "./Move";
+import { incremented, reset, resetPoints } from "../../reducers/movement";
 
 const Board = (props) => {
-  const { startGame, stopGame, openScore } = props;
+  const { startGame, stopGame, openScore, closeScoreModal, modalStyle } = props;
   const pointPosition = useSelector((state) => state.position.point);
   const headPosition = useSelector((state) => state.position.head);
   const directionPosition = useSelector((state) => state.position.direction);
   const tailPosition = useSelector((state) => state.position.tail);
   const bite = useSelector((state) => state.position.bite);
+  const dispatch = useDispatch();
 
   const boardNumber = 14;
+
+  useEffect(() => {
+    dispatch(reset());
+  }, []);
+
+  useEffect(() => {
+    dispatch(incremented());
+  }, [pointPosition]);
+
+  useEffect(() => {
+    if (startGame) {
+      dispatch(resetPoints());
+    }
+  }, [startGame]);
 
   useEffect(() => {
     let headRef = document.getElementsByClassName(
@@ -87,7 +103,16 @@ const Board = (props) => {
   return (
     <>
       <Grid />
-      {startGame ? <Move stopGame={stopGame} /> : <DefaultMove />}
+      {startGame ? (
+        <Move
+          openScore={openScore}
+          closeScoreModal={closeScoreModal}
+          modalStyle={modalStyle}
+          stopGame={stopGame}
+        />
+      ) : (
+        <DefaultMove />
+      )}
     </>
   );
 };

@@ -1,14 +1,18 @@
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Box, Modal, Typography, Button } from "@mui/material";
+import ClearIcon from "@mui/icons-material/Clear";
+import axios from "axios";
 
 import { right, left, up, down } from "../../reducers/movement";
 
 const Move = (props) => {
-  const { stopGame } = props;
+  const { stopGame, openScore, closeScoreModal, modalStyle } = props;
   const requestRef = useRef();
   const previousTimeRef = useRef();
   const dispatch = useDispatch();
   const directionPosition = useSelector((state) => state.position.direction);
+  const points = useSelector((state) => state.points.value);
 
   const movement = () => {
     switch (directionPosition) {
@@ -28,6 +32,25 @@ const Move = (props) => {
         break;
     }
   };
+
+  useEffect(() => {
+    if (openScore) {
+      axios
+        .post("/score", {
+          value: points,
+        })
+        .then((response) => {
+          if (response.status === 200) {
+            console.log(response.data);
+          } else {
+            throw new Error("status code !== 200");
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [openScore]);
 
   useEffect(() => {
     if (stopGame) {
@@ -104,7 +127,21 @@ const Move = (props) => {
     }
   }, [directionPosition, stopGame]);
 
-  return <></>;
+  return (
+    <Modal open={openScore} onClose={closeScoreModal}>
+      <Box sx={modalStyle}>
+        <span className="exit-icon">
+          <ClearIcon onClick={closeScoreModal} />
+        </span>
+        <Typography
+          id="modal-modal-description"
+          sx={{ mt: 2, display: "flex" }}
+        >
+          {`Congratulation! Your score: ${points}`}
+        </Typography>
+      </Box>
+    </Modal>
+  );
 };
 
 export default Move;
