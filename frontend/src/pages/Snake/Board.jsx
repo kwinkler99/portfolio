@@ -5,10 +5,10 @@ import { useSelector, useDispatch } from "react-redux";
 
 import DefaultMove from "./DefaultMove";
 import Move from "./Move";
-import { incremented, resetPoints } from "../../reducers/movement";
+import { incremented, reset, resetPoints } from "../../reducers/movement";
 
 const Board = (props) => {
-  const { startGame, stopGame, openScore } = props;
+  const { startGame, stopGame, openScore, closeScoreModal, modalStyle } = props;
   const pointPosition = useSelector((state) => state.position.point);
   const headPosition = useSelector((state) => state.position.head);
   const directionPosition = useSelector((state) => state.position.direction);
@@ -17,6 +17,10 @@ const Board = (props) => {
   const dispatch = useDispatch();
 
   const boardNumber = 14;
+
+  useEffect(() => {
+    dispatch(reset());
+  }, []);
 
   useEffect(() => {
     dispatch(incremented());
@@ -100,7 +104,12 @@ const Board = (props) => {
     <>
       <Grid />
       {startGame ? (
-        <Move openScore={openScore} stopGame={stopGame} />
+        <Move
+          openScore={openScore}
+          closeScoreModal={closeScoreModal}
+          modalStyle={modalStyle}
+          stopGame={stopGame}
+        />
       ) : (
         <DefaultMove />
       )}
