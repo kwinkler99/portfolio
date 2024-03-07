@@ -14,7 +14,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ClearIcon from "@mui/icons-material/Clear";
 import ResultGraph from "./Snake/ResultGraph";
 
-const style = {
+const modalStyle = {
   position: "absolute",
   top: "50%",
   left: "50%",
@@ -94,10 +94,7 @@ const Snake = () => {
     startGame && (
       <Button
         onClick={() => {
-          dispatch(reset());
-          dispatch(resetPoints());
-          setStartGame(false);
-          setStopGame(false);
+          setOpenScore(true);
         }}
         color="primary"
         variant="contained"
@@ -141,6 +138,9 @@ const Snake = () => {
               startGame={startGame}
               stopGame={stopGame}
               openScore={openScore}
+              closeScoreModal={closeScoreModal}
+              modalStyle={modalStyle}
+              openResult={openResult}
             />
           )}
         </div>
@@ -161,7 +161,7 @@ const Snake = () => {
         </div>
       </div>
       <Modal open={openStart} onClose={closeStartModal}>
-        <Box sx={style}>
+        <Box sx={modalStyle}>
           <span className="exit-icon">
             <ClearIcon onClick={closeStartModal} />
           </span>
@@ -184,20 +184,6 @@ const Snake = () => {
             sx={{ mt: 2, display: "flex" }}
           >
             Move with arrow keys
-          </Typography>
-        </Box>
-      </Modal>
-
-      <Modal open={openScore} onClose={closeScoreModal}>
-        <Box sx={style}>
-          <span className="exit-icon">
-            <ClearIcon onClick={closeScoreModal} />
-          </span>
-          <Typography
-            id="modal-modal-description"
-            sx={{ mt: 2, display: "flex" }}
-          >
-            {`Congratulation! Your score: ${"score_here"}`}
           </Typography>
         </Box>
       </Modal>
