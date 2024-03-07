@@ -2,10 +2,10 @@ from fastapi import Depends, FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 
-from crud import get_scores, save_score
-from models import Base
-from schema import Score, ScoreCreate
-from database import SessionLocal, engine
+from app.crud.crud import get_scores, save_score
+from app.models.models import Base
+from app.schema.schema import Score, ScoreCreate
+from app.db.database import SessionLocal, engine
 
 Base.metadata.create_all(bind=engine)
 
