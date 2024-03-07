@@ -1,0 +1,33 @@
+version: "3"
+
+services:
+  server:
+    image: kasiawinkler/portfolio:server
+    network_mode: host
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+
+  db:
+    image: postgres:alpine
+    network_mode: host
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    expose:
+      - 5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=portfolio
+
+  web:
+    image: kasiawinkler/portfolio:web-development
+    network_mode: host
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./src:/opt/app/src
+
+volumes:
+  postgres_data:
