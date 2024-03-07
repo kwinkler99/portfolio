@@ -12,6 +12,7 @@ import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ClearIcon from "@mui/icons-material/Clear";
+import ResultGraph from "./Snake/ResultGraph";
 
 const style = {
   position: "absolute",
@@ -35,6 +36,7 @@ const Snake = () => {
   const [openScore, setOpenScore] = useState(false);
   const [startGame, setStartGame] = useState(false);
   const [stopGame, setStopGame] = useState(false);
+  const [openResult, setOpenResult] = useState(false);
   const bite = useSelector((state) => state.position.bite);
 
   const closeStartModal = () => {
@@ -105,27 +107,57 @@ const Snake = () => {
     );
 
   const Result = () => (
-    <Button color="primary" variant="contained">
+    <Button
+      onClick={() => {
+        setOpenResult(true);
+      }}
+      color="primary"
+      variant="contained"
+    >
       Result
+    </Button>
+  );
+
+  const Play = () => (
+    <Button
+      onClick={() => {
+        setOpenResult(false);
+      }}
+      color="primary"
+      variant="contained"
+    >
+      Let's play!
     </Button>
   );
 
   return (
     <span data-section id="snake">
       <div className="container">
-        <div className="board">
-          <Board
-            startGame={startGame}
-            stopGame={stopGame}
-            openScore={openScore}
-          />
+        <div className={`board ${openResult ? "graph" : "grid"}`}>
+          {openResult ? (
+            <ResultGraph />
+          ) : (
+            <Board
+              startGame={startGame}
+              stopGame={stopGame}
+              openScore={openScore}
+            />
+          )}
         </div>
         <div className="buttons">
-          {!bite && (
-            <>{!startGame ? <Start /> : !stopGame ? <Stop /> : <Resume />}</>
+          {openResult ? (
+            <Play />
+          ) : (
+            <>
+              {!bite && (
+                <>
+                  {!startGame ? <Start /> : !stopGame ? <Stop /> : <Resume />}
+                </>
+              )}
+              <Reset />
+              <Result />
+            </>
           )}
-          <Reset />
-          <Result />
         </div>
       </div>
       <Modal open={openStart} onClose={closeStartModal}>
