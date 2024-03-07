@@ -62,13 +62,12 @@ nav {
     }
 
     .mobile-navbar {
-        z-index: 2;
         display: flex;
 
         svg {
-            width: 40px;
-            height: 40px;
-            margin: 25px;
+            width: 35px;
+            height: 35px;
+            margin: 27px;
             cursor: pointer;
         }
 
@@ -120,9 +119,8 @@ nav {
 @media only screen and (max-width: $tablet-width) {
     .arrow-mobile-down, .arrow-mobile-up {
         position: fixed;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    
+        left: 49vw;
+        
         svg {
             width: 35px;
             height: 35px;
@@ -134,6 +132,6 @@ nav {
     }
 
     .arrow-mobile-up {
-        top: 50px;  
+        top: 12px;  
     }
 }

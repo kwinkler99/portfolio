@@ -1,6 +1,7 @@
 import "./assets/style/app.scss"
 
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { motion } from "framer-motion";
 
 import Navbar from "./Navbar";
 import Contact from "./pages/Contact";
@@ -20,14 +21,20 @@ function App() {
   return (
     <>
       <Navbar />
-      <div className="App">
-        <ThemeProvider theme={buttonsTheme}>
-            <Home />
-            <Experience />
-            <Snake />
-            <Contact />
-        </ThemeProvider>
-      </div>
+      <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 3 }}
+        >
+        <div className="App">
+          <ThemeProvider theme={buttonsTheme}>
+              <Home />
+              <Experience />
+              <Snake />
+              <Contact />
+          </ThemeProvider>
+        </div>
+      </motion.div>
     </>
   );
 }
