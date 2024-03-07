@@ -3,6 +3,8 @@ import logo from "./assets/images/Logo.png";
 import darkLogo from "./assets/images/LogoDark.png";
 
 import { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
+
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -12,6 +14,26 @@ const Navbar = () => {
   const [activeSection, setActiveSection] = useState(null);
   const [openMobileNavbar, setOpenMobileNavbar] = useState(false);
   const sections = useRef([]);
+
+  const variants = {
+    open: (height = 1000) => ({
+      clipPath: `circle(${height * 2 + 200}px at calc(100% - 44.5px) 44.5px)`,
+      transition: {
+        type: "spring",
+        stiffness: 10,
+        restDelta: 2,
+      },
+    }),
+    closed: {
+      clipPath: "circle(0 at calc(100% - 44.5px) 44.5px)",
+      transition: {
+        delay: 0.2,
+        type: "spring",
+        stiffness: 400,
+        damping: 70,
+      },
+    },
+  };
 
   const handleScroll = () => {
     const scrollY = window.scrollY;
@@ -113,54 +135,84 @@ const Navbar = () => {
       <nav className="mobile-navbar">
         <span className="logo">
           <img
-            onClick={() =>
-              !openMobileNavbar &&
-              document.getElementById("home").scrollIntoView(true)
-            }
-            src={openMobileNavbar ? darkLogo : logo}
+            onClick={() => document.getElementById("home").scrollIntoView(true)}
+            src={logo}
             alt="Logo"
             width={40}
             height={40}
           />
         </span>
-        {!openMobileNavbar ? (
-          <MenuIcon onClick={() => setOpenMobileNavbar(true)} />
-        ) : (
+        <MenuIcon onClick={() => setOpenMobileNavbar(true)} />
+      </nav>
+
+      <motion.div
+        className="modal-navbar"
+        animate={openMobileNavbar ? "open" : "closed"}
+        variants={variants}
+      >
+        <nav className="mobile-navbar">
+          <span className="logo">
+            <img
+              onClick={() =>
+                !openMobileNavbar &&
+                document.getElementById("home").scrollIntoView(true)
+              }
+              src={darkLogo}
+              alt="Logo"
+              width={40}
+              height={40}
+            />
+          </span>
           <ClearIcon
             className="clear-icon"
             onClick={() => setOpenMobileNavbar(false)}
           />
-        )}
-      </nav>
-
-      {openMobileNavbar && (
-        <span className="modal-navbar">
-          <ul>
-            <li
-              onClick={() => {
-                document.getElementById("home").scrollIntoView(true);
-                setOpenMobileNavbar(false);
-              }}
-              id={`nav-button-home`}
-              style={activeSection === "home" ? mobileActiveStyle : {}}
-            >
-              My name is...
-            </li>
-            <MobileList />
-          </ul>
-        </span>
-      )}
+        </nav>
+        <ul>
+          <li
+            onClick={() => {
+              document.getElementById("home").scrollIntoView(true);
+              setOpenMobileNavbar(false);
+            }}
+            id={`nav-button-home`}
+            style={activeSection === "home" ? mobileActiveStyle : {}}
+          >
+            My name is...
+          </li>
+          <MobileList />
+        </ul>
+      </motion.div>
 
       {(activeSection === "experience" || activeSection === "contact") && (
-        <span className="arrow-mobile-up">
+        <motion.div
+          animate={{
+            scale: [0.5, 1, 0.5],
+          }}
+          transition={{
+            duration: 3,
+            ease: "easeInOut",
+            repeat: Infinity,
+          }}
+          className="arrow-mobile-up"
+        >
           <KeyboardArrowUpIcon />
-        </span>
+        </motion.div>
       )}
 
       {(activeSection === "home" || activeSection === "experience") && (
-        <span className="arrow-mobile-down">
+        <motion.div
+          animate={{
+            scale: [0.5, 1, 0.5],
+          }}
+          transition={{
+            duration: 3,
+            ease: "easeInOut",
+            repeat: Infinity,
+          }}
+          className="arrow-mobile-down"
+        >
           <KeyboardArrowDownIcon />
-        </span>
+        </motion.div>
       )}
     </>
   );
