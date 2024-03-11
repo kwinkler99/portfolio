@@ -2,12 +2,18 @@ version: "3"
 
 services:
   server:
-    image: kasiawinkler/portfolio:server
+    image: server
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
     network_mode: host
     depends_on:
       - db
+    restart: on-failure
     ports:
       - "8000:8000"
+    volumes:
+      - ./backend:/usr/src/app
 
   db:
     image: postgres:alpine
@@ -22,12 +28,15 @@ services:
       - POSTGRES_DB=portfolio
 
   web:
-    image: kasiawinkler/portfolio:web-development
+    image: web
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
     network_mode: host
     ports:
       - "3000:3000"
     volumes:
-      - ./src:/opt/app/src
+      - ./frontend/src:/opt/app/src
 
 volumes:
   postgres_data:
