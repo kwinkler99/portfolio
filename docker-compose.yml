@@ -3,7 +3,6 @@ version: "3"
 services:
   server:
     image: kasiawinkler/portfolio:server
-    build: .
     network_mode: host
     depends_on:
       - db
@@ -14,8 +13,6 @@ services:
   db:
     image: postgres:alpine
     network_mode: host
-    volumes:
-      - postgres_data:/var/lib/postgresql/data/
     expose:
       - 5432
     environment:
@@ -25,13 +22,9 @@ services:
 
   web:
     image: kasiawinkler/portfolio:web-production
-    build: ../
     network_mode: host
     depends_on:
       - db
       - server
     ports:
       - "80:80"
-
-volumes:
-  postgres_data:
