@@ -44,12 +44,12 @@ If you want to run this project yourself, you can do it in two ways:
 
 ## Deployment
 
-The application is deployed on the Netlify platform: https://www.netlify.com. For this purpose, I created a new branch (netlify-app) and used the method provided by this platform - functions. It replace the server that accepts requests from the web application.
+The application is deployed on the Netlify platform: https://www.netlify.com. For this purpose, I created a new branch (netlify-app) and used the method provided by this platform - functions. It replaces the server that handles requests from a web application.
 
 Go to https://kwinkler.netlify.app and have fun :)
 
 ## Related links
 
-- Design aplikacji - [https://www.figma.com/portfolio](https://www.figma.com/file/svGxBneV4qgk7yZPMT0P3x/Portfolio?type=design&node-id=0%3A1&mode=design&t=dXwYSUMjkJ9bZ65t-1)
+- App design - [https://www.figma.com/portfolio](https://www.figma.com/file/svGxBneV4qgk7yZPMT0P3x/Portfolio?type=design&node-id=0%3A1&mode=design&t=dXwYSUMjkJ9bZ65t-1)
 - DockerHub - https://hub.docker.com/r/kasiawinkler/portfolio/tags
 - Netlify - https://kwinkler.netlify.app/
