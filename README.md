@@ -50,6 +50,6 @@ Go to https://kwinkler.netlify.app and have fun :)
 
 ## Related links
 
+- Netlify - https://kwinkler.netlify.app/
 - App design - [https://www.figma.com/portfolio](https://www.figma.com/file/svGxBneV4qgk7yZPMT0P3x/Portfolio?type=design&node-id=0%3A1&mode=design&t=dXwYSUMjkJ9bZ65t-1)
 - DockerHub - https://hub.docker.com/r/kasiawinkler/portfolio/tags
-- Netlify - https://kwinkler.netlify.app/
