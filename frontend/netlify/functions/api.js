@@ -1,18 +1,21 @@
 import serverless from "serverless-http";
 
-const express = require('express')
-var bodyParser = require('body-parser')
-const app = express()
+import express, { Router } from "express";
 
-app.use(bodyParser.json())
+var bodyParser = require('body-parser')
+
+const api = express();
+const router = Router();
+
+api.use(bodyParser.json())
 
 let scores = []
 
-app.get('/scores', (req, res) => {
+router.get('/scores', (req, res) => {
     res.send(scores)
 })
 
-app.post('/score', (req, res) => {
+router.post('/score', (req, res) => {
     scores.push(req.body)
     res.sendStatus(200);
 })
