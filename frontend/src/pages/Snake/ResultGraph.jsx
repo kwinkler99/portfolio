@@ -13,7 +13,7 @@ const ResultGraph = () => {
 
   useEffect(() => {
     axios
-      .get("/scores")
+      .get("/api/scores")
       .then((response) => {
         let tmpData = { ...defaultDataState };
         let tmpSum = 0;

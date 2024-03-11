@@ -2,10 +2,10 @@ from fastapi import Depends, FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 
-from crud import get_scores, save_score
-from models import Base
-from schema import Score, ScoreCreate
-from database import SessionLocal, engine
+from app.crud.crud import get_scores, save_score
+from app.models.models import Base
+from app.schema.schema import Score, ScoreCreate
+from app.db.database import SessionLocal, engine
 
 Base.metadata.create_all(bind=engine)
 
@@ -31,12 +31,12 @@ def get_db():
     finally:
         db.close()
 
-@app.get("/scores", response_model=list[Score])
+@app.get("/api/scores", response_model=list[Score])
 def read_scores(db: Session = Depends(get_db)):
     scores = get_scores(db)
     return scores
 
-@app.post("/score", response_model=Score)
+@app.post("/api/score", response_model=Score)
 def create_score(score: ScoreCreate, db: Session = Depends(get_db)):
     return save_score(db=db, score=score)
 

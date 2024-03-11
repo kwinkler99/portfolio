@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 
-from models import Score
-from schema import ScoreCreate
+from app.models.models import Score
+from app.schema.schema import ScoreCreate
 
 def get_scores(db: Session):
     return db.query(Score).all()
