@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 import axios from "axios";
 
@@ -37,11 +38,13 @@ const ResultGraph = () => {
 
   const Columns = () =>
     scoreSections.map((score, i) => (
-      <div
+      <motion.div
         style={{
           gridRow: `span ${data[score]} / -1`,
-          height: data[score] > 0 ? "100%" : "0",
         }}
+        initial={{ height: 0 }}
+        animate={{ height: data[score] > 0 ? "100.2%" : "0" }}
+        transition={{ duration: 1, ease: "easeInOut" }}
         className={`column index_${i}`}
         key={i}
       />
