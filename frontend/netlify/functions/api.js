@@ -1,25 +1,32 @@
-import serverless from "serverless-http";
+import faunadb from 'faunadb'
 
-import express, { Router } from "express";
-
-var bodyParser = require('body-parser')
-
-const api = express();
-const router = Router();
-
-api.use(bodyParser.json())
-
-let scores = []
-
-router.get('/scores', (req, res) => {
-    res.send(scores)
+const q = faunadb.query
+const client = new faunadb.Client({
+  secret: process.env.FAUNADB_SECRET
 })
 
-router.post('/score', (req, res) => {
-    scores.push(req.body)
-    res.sendStatus(200);
-})
-
-api.use("/api/", router);
-
-export const handler = serverless(api);
+exports.handler = (event, context, callback) => {
+  console.log("Function `read` invoked")
+  return client.query(q.Paginate(q.Match(q.Ref("indexes/scores"))))
+  .then((response) => {
+    const todoRefs = response.data
+    console.log("Todo refs", todoRefs)
+    console.log(`${todoRefs.length} todos found`)
+    const getAllTodoDataQuery = todoRefs.map((ref) => {
+      return q.Get(ref)
+    })
+    return client.query(getAllTodoDataQuery).then((ret) => {
+      return callback(null, {
+        statusCode: 200,
+        body: JSON.stringify(ret)
+      })
+    })
+  }).catch((error) => {
+    console.log("test")
+    console.log("error", error)
+    return callback(null, {
+      statusCode: 400,
+      body: JSON.stringify(error)
+    })
+  })
+}

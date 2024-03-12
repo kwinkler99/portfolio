@@ -1,6 +1,11 @@
-[functions]
-  external_node_modules = ["express"]
-  node_bundler = "esbuild"
+[build]
+  functions = "functions
+  command = "npm run build"
+  publish = "build"
+
+[template.environment]
+  FAUNADB_SECRET = "Your FaunaDB Server Secret"
+
 [[redirects]]
   force = true
   from = "/api/*"
