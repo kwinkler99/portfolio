@@ -3,3 +3,5 @@ resources/tmp/*
 node_modules
 __pycache__
 .dockerignore
+# Local Netlify folder
+.netlify

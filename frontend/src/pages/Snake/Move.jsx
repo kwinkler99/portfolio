@@ -36,7 +36,7 @@ const Move = (props) => {
   useEffect(() => {
     if (openScore) {
       axios
-        .post("/api/score", {
+        .post("/api/scores", {
           value: points,
         })
         .then((response) => {
