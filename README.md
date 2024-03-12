@@ -44,7 +44,7 @@ If you want to run this project yourself, you can do it in two ways:
 
 ## Deployment
 
-The application is deployed on the Netlify platform: https://www.netlify.com. For this purpose, I created a new branch (netlify-app) and used the method provided by this platform - functions. It replaces the server that handles requests from a web application.
+The application is deployed on the Netlify platform: https://www.netlify.com. For this purpose, I created a new branch (netlify-app) and used the method provided by this platform - functions. It replaces the server that handles requests from a web application. To store data I used a database - FaunaDB.
 
 Go to https://kwinkler.netlify.app and have fun :)
 
