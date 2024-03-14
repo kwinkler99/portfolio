@@ -41,12 +41,13 @@ const ResultGraph = () => {
       <motion.div
         style={{
           gridRow: `span ${data[score]} / -1`,
+          gridColumn: i + 1,
         }}
         initial={{ height: 0 }}
         animate={{ height: data[score] > 0 ? "100.2%" : "0" }}
         transition={{ duration: 1, ease: "easeInOut" }}
-        className={`column index_${i}`}
-        key={i}
+        className={`column index_${score}`}
+        key={score}
       />
     ));
 
