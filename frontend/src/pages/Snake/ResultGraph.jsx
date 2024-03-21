@@ -10,25 +10,21 @@ const ResultGraph = () => {
     return acc;
   }, {});
   const [data, setData] = useState({});
-  const [sum, setSum] = useState(0);
 
   useEffect(() => {
     axios
       .get("/api/scores")
       .then((response) => {
         let tmpData = { ...defaultDataState };
-        let tmpSum = 0;
         for (let record of response.data) {
           for (let scale of scoreSections) {
             if (record.value < scale) {
               tmpData[scale] += 1;
-              tmpSum += 1;
               break;
             }
           }
         }
 
-        setSum(tmpSum);
         setData(tmpData);
       })
       .catch((err) => {
@@ -57,7 +53,7 @@ const ResultGraph = () => {
     <span className="edges">
       <div
         className="columns"
-        style={{ gridTemplateRows: `repeat(${rows}, ${400 / sum + 2}px)` }}
+        style={{ gridTemplateRows: `repeat(${rows}, ${350 / rows}px)` }}
       >
         <Columns />
       </div>
@@ -71,7 +67,10 @@ const ResultGraph = () => {
           ),
         ].map((count, index) => {
           return (
-            <p style={{ bottom: (400 / sum) * count }} key={`left_${index}`}>
+            <p
+              style={{ bottom: (350 / rows) * count - 2 }}
+              key={`left_${index}`}
+            >
               {count}
             </p>
           );
